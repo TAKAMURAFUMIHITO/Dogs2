@@ -11,46 +11,29 @@ Rails.application.routes.draw do
   scope module: :public do
     root 'homes#top'
     get 'homes/about'
-
-    get 'members/index'
-    get 'members/show'
-    get 'members/edit'
-    get 'members/update'
+    resources :members, only: [:index, :show, :edit, :update] do
+      resource :relationships, only: [:create, :destroy]
+      get 'followings' => 'relationships#followings'
+  	  get 'followers'  => 'relationships#followers'
+    end
     get 'members/confirm'
-    get 'members/withdraw'
-
-    get 'posts/new'
-    get 'posts/create'
-    get 'posts/index'
-    get 'posts/show'
-    get 'posts/edit'
-    get 'posts/update'
-    get 'posts/destroy'
-
-    get 'likes/create'
-    get 'likes/destroy'
-
-    get 'relationships/create'
-    get 'relationships/destroy'
-    get 'relationships/followings'
-    get 'relationships/followers'
-
-    get 'comments/create'
-    get 'comments/edit'
-    get 'comments/update'
-    get 'comments/destroy'
+    patch 'members/:id/withdraw' => 'members#withdraw'
+    resources :posts, only: [:new, :create, :index, :show, :edit, :update, :destroy] do
+      resource  :likes,    only: [:create, :destroy]
+      resources :comments, only: [:create, :edit, :update, :destroy]
+    end
 
     get 'searches/search'
 
-    get 'messages/create'
+    post 'messages/create'
 
-    get 'rooms/create'
+    post 'rooms/create'
     get 'rooms/index'
     get 'rooms/show'
 
     get 'notifications/index'
   end
-  
+
   # 管理者用
   # URL /admin/sign_in ...
   # 管理者の登録とパスワードの編集は削除
@@ -59,15 +42,8 @@ Rails.application.routes.draw do
   }
 
   namespace :admin do
-    get 'posts/index'
-    get 'posts/show'
-    get 'posts/destroy'
-
-    get 'members/index'
-    get 'members/ahow'
-    get 'members/edit'
-    get 'members/update'
-
+    resources :posts, only: [:index, :show, :destroy]
+    resources :members, only: [:index, :show, :edit, :update]
     get 'searches/search'
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

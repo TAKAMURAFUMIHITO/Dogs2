@@ -6,11 +6,22 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
+    <!--管理者のログイン状況でヘッダーが分岐-->
+    <!--管理者ログイン時-->
+    <% if admin_signed_in? %>
+      <%= render 'admin/layouts/header' %>
+      <!--管理者ログアウト時-->
+    <% else %>
+      <%= render 'layouts/header' %>
+    <% end %>
+    <main style="background-image: background-image.PNG">
     <%= yield %>
+    </main>
+    <%= render 'layouts/footer' %>
   </body>
 </html>
