@@ -1,4 +1,4 @@
-<header class="border-bottom border-dark" style="background-color: #deb887">
+<header class="shadow-sm">
   <nav class="navbar navbar-expand-lg navbar-light">
     <div class="container">
       <%= link_to root_path do %>
@@ -12,17 +12,12 @@
           <!--会員ログイン時-->
           <% if member_signed_in? %>
             <li class="nav-item">
-              <%= link_to current_member_path, class: 'nav-link text-dark' do %>
-                <%= image_tag 'Dogs-logo2.PNG', style: "width: 20px;" %>マイページ
-              <% end %>
-            </li>
-            <li class="nav-item">
               <%= link_to members_path, class: 'nav-link text-dark' do %>
                 <%= image_tag 'Dogs-logo2.PNG', style: "width: 20px;" %>会員一覧
               <% end %>
             </li>
             <li class="nav-item">
-              <%= link_to member_followings_path, class: 'nav-link text-dark' do %>
+              <%= link_to member_followings_path(current_member), class: 'nav-link text-dark' do %>
                 <%= image_tag 'Dogs-logo2.PNG', style: "width: 20px;" %>友達
               <% end %>
             </li>
@@ -34,6 +29,11 @@
             <li class="nav-item">
               <%= link_to destroy_member_session_path, method: :delete, class: 'nav-link text-dark' do %>
                 <%= image_tag 'Dogs-logo2.PNG', style: "width: 20px;" %>ログアウト
+              <% end %>
+            </li>
+            <li class="nav-item">
+              <%= link_to member_path(current_member), class: 'nav-link text-dark' do %>
+                <%= image_tag current_member.get_profile_image, size:'30x30' %>
               <% end %>
             </li>
           <% else %>

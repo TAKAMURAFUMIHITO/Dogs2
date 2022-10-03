@@ -13,7 +13,27 @@
  *= require_tree .
  *= require_self
  */
+ header {
+  background-color: #deb887;
+  border-bottom: 1px solid #000;
+ }
+
+ footer {
+  padding: 15px 0;
+  font-size: 14px;
+  text-align: center;
+  border-top: 1px solid #000;
+ }
+
  body {
-   background-image: url('background-image.PNG');
-   background-size: 100%;
+  background-image: url('background-image.PNG');
+  background-size: 100%;
+ }
+
+ main {
+  padding: 50px 0;
+ }
+
+ td {
+  padding: 10px;
  }
