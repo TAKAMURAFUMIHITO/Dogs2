@@ -1,0 +1,35 @@
+<h2>会員一覧</h2>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col"></th>
+      <th scope="col">ニックネーム</th>
+      <th scope="col">自己紹介</th>
+      <th scope="col">フォロー</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @members.each do |member| %>
+    <tr>
+      <td>
+        <%= link_to member_path(member.id) do %>
+          <%= image_tag member.get_profile_image, size: '30x30' %>
+        <% end %>
+      </td>
+      <td><%= member.name %></td>
+      <td><%= truncate(member.introduction, length: 15) %></td>
+      <td>
+        <% if current_member != member %>
+          <% if current_member.following?(member) %>
+            <%= link_to 'フォロー外す', member_relationships_path(member.id), method: :delete, class: 'btn btn-danger' %>
+          <% else %>
+            <%= link_to 'フォローする', member_relationships_path(member.id), method: :POST, class: 'btn btn-success' %>
+          <% end %>
+        <% else %>
+          自分
+        <% end %>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

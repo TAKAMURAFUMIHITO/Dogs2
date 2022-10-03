@@ -1,20 +1,26 @@
 <div class="container">
-  <div class='row mx-auto col-10 pt-3'>
-    <h1 class='mx-auto col-5 mb-5'>ようこそDogsへ！</h1>
-    <p class='mx-auto col-10 mb-5'>
-      Dogsは、自分の飼っているペットの写真を投稿し、犬好きと交流を深められるSNSサイトです。<br><br>
-      もちろんペットを飼っていない方でも、投稿を見たり、コメントしたりすることができます。<br><br>
-      あなたの可愛い愛犬の写真を世界に発信しましょう！
-    </p>
+  <div class='row'>
+    <div class='mx-auto col-10'>
+      <h1 class='mx-auto col-5 mb-5'>ようこそDogsへ！</h1>
+      <p class='mx-auto col-10 mb-5'>
+        Dogsは、自分の飼っているペットの写真を投稿し、犬好きと交流を深められるSNSサイトです。<br><br>
+        もちろんペットを飼っていない方でも、投稿を見たり、コメントしたりすることができます。<br><br>
+        あなたの可愛い愛犬の写真を世界に発信しましょう！
+      </p>
+    </div>
   </div>
-  <div class="row mx-auto col-2">
-    <%= link_to new_member_registration_path, class: 'text-dark mb-3' do %>
-      <%= image_tag 'Dogs-logo2.PNG', style: "width: 20px;" %>新規会員登録
-    <% end %>
-  </div>
-  <div class="row mx-auto col-2 pb-5">
-    <%= link_to new_member_session_path, class: 'text-dark' do %>
-      <%= image_tag 'Dogs-logo2.PNG', style: "width: 20px;" %>ログイン
-    <% end %>
+  <div class='row'>
+    <div class="mx-auto col-2">
+      <%= link_to new_member_registration_path, class: 'text-dark mb-3' do %>
+        <%= image_tag 'Dogs-logo2.PNG', style: "width: 20px;" %>新規会員登録
+      <% end %>
+    </div>
+  </div><br>
+  <div class='row'>
+    <div class="mx-auto col-2 pb-5">
+      <%= link_to new_member_session_path, class: 'text-dark' do %>
+        <%= image_tag 'Dogs-logo2.PNG', style: "width: 20px;" %>ログイン
+      <% end %>
+    </div>
   </div>
 </div>

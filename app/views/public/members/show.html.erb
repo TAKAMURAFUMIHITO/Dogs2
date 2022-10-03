@@ -1,2 +1,37 @@
-<h1>Public::Members#show</h1>
-<p>Find me in app/views/public/members/show.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-4">
+      <table class="table">
+        <tr><%= image_tag @member.get_profile_image, size: "100x100" %></tr>
+        <tr>
+	        <th width="35%">ニックネーム</th>
+	        <th><%= @member.name %></th>
+        </tr>
+        <tr>
+	        <th>投稿</th>
+	        <th>数を入れる</th>
+        </tr>
+        <tr>
+	        <th>フォロー</th>
+      	  <th><%= link_to "数を入れる", member_followings_path(@member.id) %></th>
+        </tr>
+        <tr>
+      	  <th>フォロワー</th>
+      	  <th><%= link_to "数を入れる", member_followers_path(@member.id) %></th>
+        </tr>
+        <tr>
+	        <th>自己紹介</th>
+	        <th><%= @member.introduction %></th>
+        </tr>
+      </table>
+      <% if current_member = @member %>
+        <%= link_to edit_member_path(@member.id), class: "btn btn-outline-secondary btn-block" do %>
+          <i class="fas fa-user-cog"></i>プロフィールを編集
+        <% end %>
+      <% end %>
+    </div>
+    <div class="col-8">
+    この人の投稿一覧（カード形式）
+    </div>
+  </div>
+</div>
