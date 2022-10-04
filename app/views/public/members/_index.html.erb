@@ -17,7 +17,7 @@
         <% end %>
       </td>
       <td><%= member.name %></td>
-      <td><%= truncate(member.introduction, length: 15) %></td>
+      <td><%= truncate(member.introduction, length: 15) %></td>  <!--15字まで表示-->
       <td>
         <% if current_member != member %>
           <% if current_member.following?(member) %>

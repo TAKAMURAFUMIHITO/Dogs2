@@ -37,3 +37,17 @@
  td {
   padding: 10px;
  }
+
+ .card-img-top {
+  text-align: center;
+ }
+
+ .card-title {
+  color: #000;
+ }
+
+ .card-footer {
+  text-align: right;
+  color: #808080;
+  font-size: 12px;
+ }
