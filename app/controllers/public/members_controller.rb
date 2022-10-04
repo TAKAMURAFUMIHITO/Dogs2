@@ -1,5 +1,4 @@
 class Public::MembersController < ApplicationController
-  before_action :ensure_correct_member, only: [:update]
   def index
     @members = Member.all
   end
@@ -18,9 +17,9 @@ class Public::MembersController < ApplicationController
   end
 
   def update
-    @member = Member.find(params[:id])
-    if @member.update(member_params)
-      redirect_to member_path(@member.id), notice: "プロフィールを更新しました。"
+    member = Member.find(params[:id])
+    if member.update(member_params)
+      redirect_to member_path(current_member), notice: "プロフィールを更新しました。"
     else
       render "edit"
     end
@@ -36,12 +35,5 @@ class Public::MembersController < ApplicationController
 
   def member_params
     params.require(:member).permit(:name, :introduction, :profile_image)
-  end
-
-  def ensure_correct_member
-    @member = Member.find(params[:id])
-    unless @menber == current_member
-      redirect_to member_path(current_member)
-    end
   end
 end

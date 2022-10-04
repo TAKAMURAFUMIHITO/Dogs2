@@ -4,6 +4,8 @@ class Member < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  has_many :posts
+
   validates :name, length: { minimum: 2, maximum: 20 }, presence: true
   has_one_attached :profile_image
 
