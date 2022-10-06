@@ -21,8 +21,7 @@
             </div>
           <% end %>
           <div class="card-body">
-            <%= render 'like_btn', post: post %>
-            <%= render 'like_count', post: post %>
+            <div class="mb-3" id="like_<%= post.id %>"><%= render "public/likes/like", post: post %></div>
             <%= link_to post_path(post.id) do %>
               <h5 class="card-title"><%= post.title %></h4>
             <% end %>

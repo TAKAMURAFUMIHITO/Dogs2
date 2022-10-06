@@ -18,7 +18,7 @@
             <%= link_to edit_post_path(@post.id), class: "btn btn-outline-secondary" do %>
               <i class="fas fa-pen-to-square"></i>
             <% end %>
-            <%= link_to post_path, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-outline-danger" do %>
+            <%= link_to post_path, method: :delete, data: { confirm: "本当に消しますか？" }, class: "btn btn-outline-danger" do %>
               <i class="fas fa-trash"></i>
             <% end %>
           </div>
@@ -31,8 +31,7 @@
           </div>
         <% end %>
         <div class="card-body">
-          <%= render 'like_btn', post: @post %>
-          <%= render 'like_count', post: @post %>
+          <div class="mb-3" id="like_<%= @post.id %>"><%= render "public/likes/like", post: @post %></div>
           <h3 class="card-title"><%= @post.title %></h3>
           <p class="card-text" style="font-size: 20px;" ><%= @post.body %></p>
         </div>
