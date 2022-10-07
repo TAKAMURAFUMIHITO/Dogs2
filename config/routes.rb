@@ -20,7 +20,7 @@ Rails.application.routes.draw do
     patch 'members/:id/withdraw' => 'members#withdraw'
     resources :posts, only: [:new, :create, :index, :show, :edit, :update, :destroy] do
       resource  :likes,    only: [:create, :destroy]
-      resources :comments, only: [:create, :edit, :update, :destroy]
+      resources :comments, only: [:create, :destroy]
     end
 
     get 'searches/search'

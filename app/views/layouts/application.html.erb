@@ -20,7 +20,16 @@
       <%= render 'layouts/header' %>
     <% end %>
     <main>
-    <%= yield %>
+      <% if member_signed_in? %>
+        <div class="search_form", style="text-align: ">
+          <%= form_with url: searches_search_path, method: :get, local: true do |f| %>
+            <%= f.select :range, options_for_select([["会員"], ["投稿"]]) %>
+            <%= f.text_field :word %>
+            <%= f.submit "検索" %>
+          <% end %>
+        </div>
+    <% end %>
+      <%= yield %>
     </main>
     <%= render 'layouts/footer' %>
   </body>
