@@ -38,6 +38,10 @@
   padding: 10px;
  }
 
+ th {
+  font-weight: normal;
+ }
+
  .card-img-top {
   text-align: center;
  }
@@ -50,4 +54,13 @@
   text-align: right;
   color: #808080;
   font-size: 12px;
+ }
+
+ .comment {
+  text-align: center;
+ }
+
+ .search_form {
+  text-align: right;
+  margin-right: 10%;
  }

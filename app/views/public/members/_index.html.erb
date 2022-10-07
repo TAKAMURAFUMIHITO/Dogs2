@@ -1,4 +1,3 @@
-<h2>会員一覧</h2>
 <table class="table table-striped">
   <thead>
     <tr>
@@ -21,12 +20,10 @@
       <td>
         <% if current_member != member %>
           <% if current_member.following?(member) %>
-            <%= link_to 'フォロー外す', member_relationships_path(member.id), method: :delete, class: 'btn btn-danger' %>
+            <%= link_to 'フォロー中', member_relationships_path(member.id), method: :delete, data: { confirm: "ファローを外しますか？" }, class: 'btn btn-outline-secondary' %>
           <% else %>
-            <%= link_to 'フォローする', member_relationships_path(member.id), method: :POST, class: 'btn btn-success' %>
+            <%= link_to 'フォロー', member_relationships_path(member.id), method: :POST, class: 'btn btn-outline-success' %>
           <% end %>
-        <% else %>
-          自分
         <% end %>
       </td>
     </tr>

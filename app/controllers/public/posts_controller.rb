@@ -24,6 +24,7 @@ class Public::PostsController < ApplicationController
     @today = Date.today #今日の日付を取得
     @now = Time.now     #現在時刻を取得
     @post = Post.find(params[:id])
+    @comment = Comment.new
   end
 
   def edit
@@ -33,7 +34,7 @@ class Public::PostsController < ApplicationController
   def update
     post = Post.find(params[:id])
     if post.update(post_params)
-      redirect_to post_path(post.id), notice: "投稿を更新しました。"
+      redirect_to post_path(post.id)
     else
       render "edit"
     end

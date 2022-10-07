@@ -2,7 +2,6 @@
   <div class="row mb-3">
     <div class="mx-auto col-10">
       <h2>投稿詳細</h2>
-      <p id="notice"><%= notice %></p>
     </div>
   </div>
   <div class="row mb-3">
@@ -16,7 +15,7 @@
           </div>
           <div class="float-right">
             <%= link_to edit_post_path(@post.id), class: "btn btn-outline-secondary" do %>
-              <i class="fas fa-pen-to-square"></i>
+              <i class="fas fa-edit"></i>
             <% end %>
             <%= link_to post_path, method: :delete, data: { confirm: "本当に消しますか？" }, class: "btn btn-outline-danger" do %>
               <i class="fas fa-trash"></i>
@@ -31,13 +30,13 @@
           </div>
         <% end %>
         <div class="card-body">
-          <div class="mb-3" id="like_<%= @post.id %>"><%= render "public/likes/like", post: @post %></div>
+          <span id="like_<%= @post.id %>"><%= render "public/likes/like", post: @post %></span>
+          <span id="comments_<%= @post.id %>"><%= render "public/comments/count", post: @post %></span><br><br>
           <h3 class="card-title"><%= @post.title %></h3>
-          <p class="card-text" style="font-size: 20px;" ><%= @post.body %></p>
+          <p class="card-text" style="font-size: 20px;"><%= @post.body %></p>
         </div>
-        <div class="card-footer">
-          <%= render 'time', post: @post %>
-        </div>
+        <div class="mt-5 mb-5" id="comment_area"><%= render "public/comments/comments", post: @post, comment: @comment %></div>
+        <div class="card-footer"><%= render "time", post: @post %></div>
       </div>
     </div>
   </div>

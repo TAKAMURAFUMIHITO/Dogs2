@@ -1,0 +1,26 @@
+<%= form_with(model: [post, comment], local: false) do |f| %>
+  <div class="comment">
+    <%= f.text_area :comment, :size => "60x1", placeholder: "コメント入力" %>
+  </div>
+  <div class="comment mb-3">
+    <%= f.submit "コメントする", class: "btn btn-outline-primary" %>
+  </div>
+<% end %>
+
+<% post.comments.each do |comment| %>
+  <table class="mx-auto">
+    <th width="50">
+      <%= link_to member_path(comment.member.id) do %>
+        <%= image_tag comment.member.get_profile_image, size: "40x40" %>
+      <% end %>
+    </th>
+    <th width="400">
+      <%= comment.comment %>
+    </th>
+    <th>
+      <%= link_to post_comment_path(post, comment), method: :delete, data: { confirm: "本当に消しますか？" }, remote: true do %>
+        <i class="fas fa-trash-alt"></i>
+      <% end %>
+    </th>
+  </table>
+<% end %>

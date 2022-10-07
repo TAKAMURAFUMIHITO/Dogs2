@@ -19,7 +19,7 @@ class Public::MembersController < ApplicationController
   def update
     member = Member.find(params[:id])
     if member.update(member_params)
-      redirect_to member_path(current_member), notice: "プロフィールを更新しました。"
+      redirect_to member_path(current_member)
     else
       render "edit"
     end
