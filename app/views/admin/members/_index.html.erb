@@ -4,6 +4,7 @@
       <th scope="col"></th>
       <th scope="col">ニックネーム</th>
       <th scope="col">自己紹介</th>
+      <th scope="col">退会ステータス</th>
       <th scope="col"></th>
     </tr>
   </thead>
@@ -17,6 +18,13 @@
       </td>
       <td><%= member.name %></td>
       <td><%= truncate(member.introduction, length: 30) %></td>  <!--15字まで表示-->
+      <td>
+        <% if member.is_deleted == false %>
+          <strong class="text-success"><%= "有効" %></strong>
+        <% else %>
+          <strong class= "text-secondary"><%= "退会" %></strong>
+        <% end %>
+      </td>
       <td>
         <%= link_to edit_admin_member_path(member.id), class: "btn btn-outline-secondary" do %>
           <i class="fas fa-user-edit"></i>
