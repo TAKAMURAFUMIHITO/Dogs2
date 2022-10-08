@@ -15,7 +15,7 @@
     <!--管理者ログイン時-->
     <% if admin_signed_in? %>
       <%= render 'admin/layouts/header' %>
-      <!--管理者ログアウト時-->
+      <!--その他-->
     <% else %>
       <%= render 'layouts/header' %>
     <% end %>
@@ -27,7 +27,7 @@
             <%= f.text_field :word %>
             <%= f.submit "検索" %>
           <% end %>
-        </div>
+        </div><br>
     <% end %>
       <%= yield %>
     </main>

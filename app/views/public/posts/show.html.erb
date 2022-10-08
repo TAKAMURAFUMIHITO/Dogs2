@@ -14,19 +14,19 @@
             <% end %>
           </div>
           <div class="float-right">
-            <%= link_to edit_post_path(@post.id), class: "btn btn-outline-secondary" do %>
-              <i class="fas fa-edit"></i>
-            <% end %>
-            <%= link_to post_path, method: :delete, data: { confirm: "本当に消しますか？" }, class: "btn btn-outline-danger" do %>
-              <i class="fas fa-trash"></i>
+            <% if @post.member == current_member %>
+              <%= link_to edit_post_path(@post.id), class: "btn btn-outline-secondary" do %>
+                <i class="fas fa-edit"></i>
+              <% end %>
+              <%= link_to post_path, method: :delete, data: { confirm: "本当に消しますか？" }, class: "btn btn-outline-danger" do %>
+                <i class="fas fa-trash"></i>
+              <% end %>
             <% end %>
           </div>
         </div>
         <% if @post.post_image.present? %>
           <div class="card-img-top">
-            <%= link_to post_path(@post.id) do %>
-              <%= image_tag @post.post_image, size: "300x375" %>
-            <% end %>
+            <%= image_tag @post.post_image, size: "300x375" %>
           </div>
         <% end %>
         <div class="card-body">

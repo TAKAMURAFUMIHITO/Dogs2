@@ -32,6 +32,6 @@ class Member < ApplicationRecord
   end
 
   def self.looks(search, word)
-    @member = Member.where("name LIKE?","%#{word}%")
+    @member = Member.where("name LIKE?","%#{word}%")  #部分一致のみ
   end
 end
