@@ -18,8 +18,10 @@
       <%= comment.comment %>
     </th>
     <th>
-      <%= link_to post_comment_path(post, comment), method: :delete, data: { confirm: "本当に消しますか？" }, remote: true do %>
-        <i class="fas fa-trash-alt"></i>
+      <% if comment.member == current_member %>
+        <%= link_to post_comment_path(post, comment), method: :delete, data: { confirm: "本当に消しますか？" }, remote: true do %>
+          <i class="fas fa-trash-alt"></i>
+        <% end %>
       <% end %>
     </th>
   </table>

@@ -1,4 +1,5 @@
 class Public::PostsController < ApplicationController
+  before_action :authenticate_member!
   def new
     @post = Post.new
   end
@@ -29,6 +30,11 @@ class Public::PostsController < ApplicationController
 
   def edit
     @post = Post.find(params[:id])
+    if @post.member == current_member
+      render :edit
+    else
+      redirect_to member_path(current_member)
+    end
   end
 
   def update

@@ -16,8 +16,8 @@ Rails.application.routes.draw do
       get 'followings' => 'relationships#followings'
   	  get 'followers'  => 'relationships#followers'
     end
-    get 'members/confirm'
-    patch 'members/:id/withdraw' => 'members#withdraw'
+    get 'members/:id/confirm' => 'members#confirm', as: 'confirm'
+    patch 'members/:id/withdraw' => 'members#withdraw', as: 'withdraw'
     resources :posts, only: [:new, :create, :index, :show, :edit, :update, :destroy] do
       resource  :likes,    only: [:create, :destroy]
       resources :comments, only: [:create, :destroy]
@@ -42,9 +42,12 @@ Rails.application.routes.draw do
   }
 
   namespace :admin do
-    resources :posts, only: [:index, :show, :destroy]
+    resources :posts, only: [:index, :show, :destroy] do
+      resources :comments, only: [:destroy]
+    end
     resources :members, only: [:index, :show, :edit, :update]
     get 'searches/search'
+    patch 'members/:id/withdraw' => 'members#withdraw', as: 'withdraw'
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

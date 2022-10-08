@@ -1,10 +1,14 @@
 class Public::MembersController < ApplicationController
+  before_action :authenticate_member!
   def index
     @members = Member.all
   end
 
   def show
     @member = Member.find(params[:id])
+    @posts = @member.posts
+    @today = Date.today #今日の日付を取得
+    @now = Time.now     #現在時刻を取得
   end
 
   def edit
@@ -29,6 +33,11 @@ class Public::MembersController < ApplicationController
   end
 
   def withdraw
+    @member = Member.find(params[:id])
+    @member.update(is_deleted: true)    # is_deletedカラムをtrueに変更することにより削除フラグを立てる
+    reset_session
+    flash[:withdraw] = "退会処理を実行いたしました"
+    redirect_to new_member_registration_path
   end
 
   private
