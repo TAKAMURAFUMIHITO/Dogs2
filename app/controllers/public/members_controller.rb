@@ -7,8 +7,24 @@ class Public::MembersController < ApplicationController
   def show
     @member = Member.find(params[:id])
     @posts = @member.posts
-    @today = Date.today #今日の日付を取得
-    @now = Time.now     #現在時刻を取得
+    @today = Date.today # 今日の日付を取得
+    @now = Time.now     # 現在時刻を取得
+    @current_entry = Entry.where(member_id: current_member.id)  # ログインしてるユーザーとメッセージ相手のユーザー情報をEntryテーブルから検索して取得
+    @another_entry = Entry.where(member_id: @member.id)
+    unless @member.id == current_member.id                      # 会員がログインしていない時
+      @current_entry.each do |current|                          # 取得した2つの会員情報をそれぞれeachで取り出してEntryテーブル内に同じroom_idが存在するか
+        @another_entry.each do |another|
+          if current.room_id == another.room_id                 # 同じroom_idが存在する場合 → 既にroomが存在している
+            @is_room = true                                     # room_idの変数とroomが存在するかどうかの条件であるis_roomを渡す
+            @room_id = current.room_id
+          end
+        end
+      end
+      unless @is_room                                           # 同じroom_idが存在しない場合は新しくインスタンスを作成
+        @room = Room.new
+        @entry = Entry.new
+      end
+    end
   end
 
   def edit

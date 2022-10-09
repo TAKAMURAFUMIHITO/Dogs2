@@ -10,9 +10,9 @@
   <tbody>
     <% @members.each do |member| %>
     <tr>
-      <td>
+      <td class="profile_image">
         <%= link_to member_path(member.id) do %>
-          <%= image_tag member.get_profile_image, size: '30x30' %>
+          <%= image_tag member.get_profile_image %>
         <% end %>
       </td>
       <td><%= member.name %></td>

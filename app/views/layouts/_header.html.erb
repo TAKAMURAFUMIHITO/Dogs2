@@ -17,8 +17,8 @@
               <% end %>
             </li>
             <li class="nav-item">
-              <%= link_to member_followings_path(current_member), class: 'nav-link text-dark' do %>
-                <%= image_tag 'Dogs-logo2.PNG', style: "width: 20px;" %>友達
+              <%= link_to rooms_path, class: 'nav-link text-dark' do %>
+                <%= image_tag 'Dogs-logo2.PNG', style: "width: 20px;" %>チャット
               <% end %>
             </li>
             <li class="nav-item">
@@ -36,9 +36,9 @@
                 <%= image_tag 'Dogs-logo2.PNG', style: "width: 20px;" %>ログアウト
               <% end %>
             </li>
-            <li class="nav-item">
+            <li class="nav-item profile_image">
               <%= link_to member_path(current_member), class: 'nav-link text-dark' do %>
-                <%= image_tag current_member.get_profile_image, size:'30x30' %>
+                <%= image_tag current_member.get_profile_image %>
               <% end %>
             </li>
           <% else %>

@@ -22,14 +22,9 @@ Rails.application.routes.draw do
       resource  :likes,    only: [:create, :destroy]
       resources :comments, only: [:create, :destroy]
     end
-
     get 'searches/search'
-
-    post 'messages/create'
-
-    post 'rooms/create'
-    get 'rooms/index'
-    get 'rooms/show'
+    resources :messages, only: [:create]
+    resources :rooms, only: [:create, :index, :show]
 
     get 'notifications/index'
   end
