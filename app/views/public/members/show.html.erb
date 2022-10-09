@@ -2,6 +2,7 @@
   <div class="row">
     <div class="col-4">
       <table class="table">
+        <h2 style="text-align: center;"><%= @member.name %>のプロフィール</h2>
         <tr><%= image_tag @member.get_profile_image, size: "100x100" %></tr>
         <tr style="text-align: center;">
           <th>投稿<br><%= @member.posts.count %></th>
@@ -30,14 +31,26 @@
           <i class="fas fa-user-edit"></i>プロフィールを編集
         <% end %>
       <% end %>
+      <% unless current_member == @member %>
+        <% if @is_room == true %>
+          <%= link_to "メッセージを送る", room_path(@room_id), class: "btn btn-outline-primary btn-block" %>
+        <% else %>
+          <%= form_with model: @room do |f| %>
+            <%= fields_for @entry do |e| %>
+              <%= e.hidden_field :member_id, value: @member.id %>
+            <% end %>
+            <%= f.submit "チャットを始める", class: "btn btn-outline-primary btn-block" %>
+          <% end %>
+        <% end %>
+      <% end %>
     </div>
     <div class="col-8">
       <div class="card-deck">
         <% @posts.each do |post| %>
           <div class="col-md-6">
             <div class="card mb-4 shadow-sm">
-              <div class="card-header">
-                <%= image_tag post.member.get_profile_image, size: "30x30" %>
+              <div class="card-header profile_image">
+                <%= image_tag post.member.get_profile_image %>
               </div>
               <% if post.post_image.present? %>
                 <div class="card-img-top">

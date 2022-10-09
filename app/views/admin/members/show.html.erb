@@ -2,6 +2,7 @@
   <div class="row">
     <div class="col-4">
       <table class="table">
+        <h2 style="text-align: center;"><%= @member.name %>のプロフィール</h2>
         <tr><%= image_tag @member.get_profile_image, size: "100x100" %></tr>
         <tr>
           <th>投稿</th>
@@ -17,7 +18,7 @@
         </tr>
       </table>
       <%= link_to edit_admin_member_path(@member.id), class: "btn btn-outline-secondary btn-block" do %>
-        <i class="fas fa-user-edit"></i>プロフィールを編集
+        <i class="fas fa-user-edit"></i>会員情報を編集
       <% end %>
     </div>
     <div class="col-8">
