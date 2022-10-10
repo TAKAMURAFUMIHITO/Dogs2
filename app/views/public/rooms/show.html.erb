@@ -11,10 +11,10 @@
           <p><%= message.message %></p>
         </div>
       <% else %>
-        <div class="chat">
-          <%= image_tag message.member.get_profile_image %>
-          <div class="callout">
-            <p><%= message.message %></p>
+        <div class="you">
+          <div class="icon"><%= link_to image_tag(message.member.get_profile_image), member_path(message.member) %></div>
+          <div class="chat">
+            <div class="your_message"><p><%= message.message %></p></div>
           </div>
         </div>
       <% end %>

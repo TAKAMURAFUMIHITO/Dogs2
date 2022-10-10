@@ -2,8 +2,11 @@ class Public::LikesController < ApplicationController
   before_action :authenticate_member!
   def create
     @post = Post.find(params[:post_id])
-    like = current_member.likes.new(post_id: @post.id)
-    like.save
+    @like = current_member.likes.new(post_id: @post.id)
+    @like.save
+    # 通知の作成
+    @post.create_notification_like!(current_member)
+    respond_to :js
   end
 
   def destroy

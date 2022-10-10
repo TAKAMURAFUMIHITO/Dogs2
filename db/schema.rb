@@ -105,7 +105,7 @@ ActiveRecord::Schema.define(version: 2022_10_03_042120) do
     t.integer "room_id"
     t.integer "message_id"
     t.string "action"
-    t.boolean "is_checked", default: false, null: false
+    t.boolean "checked", default: false, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
