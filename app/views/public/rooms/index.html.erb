@@ -13,7 +13,7 @@
               <div class="col-1 profile_image"><%= image_tag entry.member.get_profile_image %></div>
               <div class="col-3" style="text-align: center;"><%= entry.member.name %></div>
               <!--# roomの最後のメッセージを20字まで表示-->
-              <div class="col-4" style="text-align: center;"><%= truncate(Message.find_by(id: entry.room.message_ids.last)&.message, length: 20) %></div>
+              <div class="col-8" style="text-align: center;"><%= truncate(Message.find_by(id: entry.room.message_ids.last)&.message, length: 20) %></div>
             </div>
           </div>
         <% end %>

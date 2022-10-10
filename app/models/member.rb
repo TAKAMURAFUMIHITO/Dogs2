@@ -12,6 +12,8 @@ class Member < ApplicationRecord
   has_many :followers, through: :reverse_of_relationships, source: :follower
   has_many :comments, dependent: :destroy
   has_many :entries, dependent: :destroy
+  has_many :active_notifications, class_name: "Notification", foreign_key: "visitor_id", dependent: :destroy
+  has_many :passive_notifications, class_name: "Notification", foreign_key: "visited_id", dependent: :destroy
 
   validates :name, length: { minimum: 2, maximum: 20 }, presence: true
   has_one_attached :profile_image
@@ -34,5 +36,16 @@ class Member < ApplicationRecord
 
   def self.looks(search, word)
     @member = Member.where("name LIKE?","%#{word}%")  #部分一致のみ
+  end
+
+  def create_notification_follow!(current_member)
+    temp = Notification.where(["visitor_id = ? and visited_id = ? and action = ? ", current_member.id, id, 'follow'])
+    if temp.blank?
+      notification = current_member.active_notifications.new(
+        visited_id: id,
+        action: 'follow'
+      )
+      notification.save if notification.valid?
+    end
   end
 end

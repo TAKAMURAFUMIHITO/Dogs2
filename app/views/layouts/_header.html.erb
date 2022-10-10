@@ -31,6 +31,14 @@
                 <%= image_tag 'Dogs-logo2.PNG', style: "width: 20px;" %>みんなの投稿
               <% end %>
             </li>
+            <% if unchecked_notifications.any? %>
+              <i class="fa fa-circle" style="color: gold;"></i>
+            <% end %>
+            <li class="nav-item">
+              <%= link_to notifications_path, class: 'nav-link text-dark' do %>
+                <%= image_tag 'Dogs-logo2.PNG', style: "width: 20px;" %>通知
+              <% end %>
+            </li>
             <li class="nav-item">
               <%= link_to destroy_member_session_path, method: :delete, class: 'nav-link text-dark' do %>
                 <%= image_tag 'Dogs-logo2.PNG', style: "width: 20px;" %>ログアウト

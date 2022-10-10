@@ -1,8 +1,10 @@
 class Public::RelationshipsController < ApplicationController
   before_action :authenticate_member!
   def create
-    member = Member.find(params[:member_id])
-    current_member.follow(member)
+    @member = Member.find(params[:member_id])
+    current_member.follow(@member)
+    #通知の作成
+	  @member.create_notification_follow!(current_member)
 		redirect_to request.referer
   end
 

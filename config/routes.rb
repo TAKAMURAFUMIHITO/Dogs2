@@ -5,28 +5,28 @@ Rails.application.routes.draw do
   # 会員のパスワード編集は削除
   devise_for :members, skip: [:passwords], controllers: {
     registrations: "public/registrations",
-    sessions: 'public/sessions'
+    sessions: "public/sessions"
   }
 
   scope module: :public do
-    root 'homes#top'
-    get 'homes/about'
+    root "homes#top"
+    get "homes/about"
     resources :members, only: [:index, :show, :edit, :update] do
       resource :relationships, only: [:create, :destroy]
-      get 'followings' => 'relationships#followings'
-  	  get 'followers'  => 'relationships#followers'
+      get "followings" => "relationships#followings"
+  	  get "followers"  => "relationships#followers"
     end
-    get 'members/:id/confirm' => 'members#confirm', as: 'confirm'
-    patch 'members/:id/withdraw' => 'members#withdraw', as: 'withdraw'
+    get "members/:id/confirm" => "members#confirm", as: "confirm"
+    patch "members/:id/withdraw" => "members#withdraw", as: "withdraw"
     resources :posts, only: [:new, :create, :index, :show, :edit, :update, :destroy] do
       resource  :likes,    only: [:create, :destroy]
       resources :comments, only: [:create, :destroy]
     end
-    get 'searches/search'
-    resources :messages, only: [:create]
-    resources :rooms, only: [:create, :index, :show]
-
-    get 'notifications/index'
+    get "searches/search"
+    resources :messages,      only: :create
+    resources :rooms,         only: [:create, :index, :show]
+    resources :notifications, only: :index
+    delete "destroy_all" => "notifications#destroy_all", as: "destroy_all"
   end
 
   # 管理者用
@@ -38,11 +38,11 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :posts, only: [:index, :show, :destroy] do
-      resources :comments, only: [:destroy]
+      resources :comments, only: :destroy
     end
     resources :members, only: [:index, :show, :edit, :update]
-    get 'searches/search'
-    patch 'members/:id/withdraw' => 'members#withdraw', as: 'withdraw'
+    get "searches/search"
+    patch "members/:id/withdraw" => "members#withdraw", as: "withdraw"
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
