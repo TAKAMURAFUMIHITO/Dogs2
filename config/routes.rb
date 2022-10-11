@@ -14,12 +14,18 @@ Rails.application.routes.draw do
     resources :members, only: [:index, :show, :edit, :update] do
       resource :relationships, only: [:create, :destroy]
       get "followings" => "relationships#followings"
-  	  get "followers"  => "relationships#followers"
+      get "followers"  => "relationships#followers"
+      member do
+        get :likes
+      end
     end
     get "members/:id/confirm" => "members#confirm", as: "confirm"
     patch "members/:id/withdraw" => "members#withdraw", as: "withdraw"
     resources :posts, only: [:new, :create, :index, :show, :edit, :update, :destroy] do
       resource  :likes,    only: [:create, :destroy]
+      member do
+        get :likes
+      end
       resources :comments, only: [:create, :destroy]
     end
     get "searches/search"
