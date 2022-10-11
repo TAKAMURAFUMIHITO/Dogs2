@@ -56,6 +56,14 @@ class Public::MembersController < ApplicationController
     redirect_to new_member_registration_path
   end
 
+  def likes
+    @member = Member.find(params[:id])
+    likes = Like.where(member_id: @member.id).pluck(:post_id)
+    @like_posts = Post.find(likes)
+    @today = Date.today #今日の日付を取得
+    @now = Time.now     #現在時刻を取得
+  end
+
   private
 
   def member_params

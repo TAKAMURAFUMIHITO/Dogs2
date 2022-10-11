@@ -1,14 +1,13 @@
 <% visitor = notification.visitor %>
 <% post_id = notification.post_id %>
 
-<div class="member-view clearfix">
+<div>
   <%= link_to member_path(visitor) do %>
     <%= image_tag visitor.get_profile_image, size: "50x50", class: "profile-img-circle" %>
   <% end %>
-  <%= notification_form(notification) %><span class="moderate-font"><%= " (#{time_ago_in_words(notification.created_at)} 前)" %></span>
+  <%= notification_form(notification) %>
   <br>
   <% if !@comment.nil? %>
     <p class="moderate-font text-center" style="color: #C0C0C0;"><%= @comment %></p>
   <% end %>
 </div>
-<% end %>

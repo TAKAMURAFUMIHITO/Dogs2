@@ -52,6 +52,12 @@ class Public::PostsController < ApplicationController
     redirect_to posts_path
   end
 
+  def likes
+    @post = Post.find(params[:id])
+    likes = Like.where(post_id: @post.id).pluck(:member_id)
+    @like_members = Member.find(likes)
+  end
+
   private
 
   def post_params

@@ -8,7 +8,7 @@
     </tr>
   </thead>
   <tbody>
-    <% @members.each do |member| %>
+    <% members.each do |member| %>
     <tr>
       <td class="profile_image">
         <%= link_to member_path(member.id) do %>
@@ -20,9 +20,9 @@
       <td>
         <% if current_member != member %>
           <% if current_member.following?(member) %>
-            <%= link_to 'フォロー中', member_relationships_path(member.id), method: :delete, data: { confirm: "ファローを外しますか？" }, class: 'btn btn-outline-secondary' %>
+            <%= link_to "フォロー中", member_relationships_path(member.id), method: :delete, data: { confirm: "ファローを外しますか？" }, class: "btn btn-outline-secondary" %>
           <% else %>
-            <%= link_to 'フォロー', member_relationships_path(member.id), method: :POST, class: 'btn btn-outline-success' %>
+            <%= link_to "フォロー", member_relationships_path(member.id), method: :POST, class: "btn btn-outline-success" %>
           <% end %>
         <% end %>
       </td>
