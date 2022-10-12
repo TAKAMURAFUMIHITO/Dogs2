@@ -8,7 +8,11 @@
     <% @messages.each do |message| %>
       <% if message.member_id == current_member.id %>
         <div class="my_message">
-          <p><%= message.message %></p>
+          <%= link_to message_path(message.id), method: :delete, data: { confirm: "メッセージを消しますか？" } do %>
+            <p style="color: #000;">
+              <%= message.message %>
+            </p>
+          <% end %>
         </div>
       <% else %>
         <div class="you">
@@ -26,5 +30,6 @@
       <%= f.hidden_field :room_id, :value => @room.id %>
       <%= f.submit "送信する", class: "btn btn-outline-success" %>
     <% end %>
+    メッセージをクリックすると削除することができます。
   </div>
 </div>
