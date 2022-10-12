@@ -10,9 +10,15 @@ class Public::MessagesController < ApplicationController
     end
   end
 
+  def destroy
+    message = Message.find(params[:id])
+    message.destroy
+    redirect_to room_path(message.room)
+  end
+
   private
 
   def message_params
       params.require(:message).permit(:room_id, :message)
-    end
+  end
 end

@@ -2,12 +2,12 @@ class Public::CommentsController < ApplicationController
   before_action :authenticate_member!
   def create
     @post = Post.find(params[:post_id])
-    @comment = current_member.comments.new(comment_params)
+    @comment = @post.comments.build(comment_params)
     @comment.member_id = current_member.id
-    @comment.post_id = @post.id
+    @comment_post = @comment.post
     if @comment.save
       #通知の作成
-      @comment.post.create_notification_comment!(current_member, @comment.id)
+      @comment_post.create_notification_comment!(current_member, @comment.id)
     end
   end
 
