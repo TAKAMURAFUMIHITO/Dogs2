@@ -17,11 +17,6 @@
               <% end %>
             </li>
             <li class="nav-item">
-              <%= link_to rooms_path, class: 'nav-link text-dark' do %>
-                <%= image_tag 'Dogs-logo2.PNG', style: "width: 20px;" %>チャット
-              <% end %>
-            </li>
-            <li class="nav-item">
               <%= link_to new_post_path, class: 'nav-link text-dark' do %>
                 <%= image_tag 'Dogs-logo2.PNG', style: "width: 20px;" %>投稿する
               <% end %>
@@ -31,11 +26,17 @@
                 <%= image_tag 'Dogs-logo2.PNG', style: "width: 20px;" %>みんなの投稿
               <% end %>
             </li>
-            <% if unchecked_notifications.any? %>
-              <i class="fa fa-circle" style="color: gold;"></i>
-            <% end %>
+            <li class="nav-item">
+              <%= link_to rooms_path, class: 'nav-link text-dark' do %>
+                <%= image_tag 'Dogs-logo2.PNG', style: "width: 20px;" %>チャット
+              <% end %>
+            </li>
+
             <li class="nav-item">
               <%= link_to notifications_path, class: 'nav-link text-dark' do %>
+                <% if unchecked_notifications.any? %>
+                  <i class="fa fa-circle" style="color: red; width: 10px; vertical-align: top;"></i>
+                <% end %>
                 <%= image_tag 'Dogs-logo2.PNG', style: "width: 20px;" %>通知
               <% end %>
             </li>
@@ -54,11 +55,6 @@
             <li class="nav-item">
               <%= link_to homes_about_path, class: 'nav-link text-dark' do %>
                 <%= image_tag 'Dogs-logo2.PNG', style: "width: 20px;" %>Dogsって？
-              <% end %>
-            </li>
-            <li class="nav-item">
-              <%= link_to posts_path, class: 'nav-link text-dark' do %>
-                <%= image_tag 'Dogs-logo2.PNG', style: "width: 20px;" %>投稿一覧
               <% end %>
             </li>
             <li class="nav-item">
