@@ -2,9 +2,9 @@
   <% posts.each do |post| %>
     <div class="col-md-4">
       <div class="card mb-4 shadow-sm">
-        <div class="card-header">
+        <div class="card-header profile_image">
           <%= link_to member_path(post.member.id) do %>
-            <%= image_tag post.member.get_profile_image, size: "30x30" %>
+            <%= image_tag post.member.get_profile_image %>
           <% end %>
         </div>
         <% if post.post_image.present? %>

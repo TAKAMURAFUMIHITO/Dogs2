@@ -19,7 +19,7 @@ class Member < ApplicationRecord
   has_one_attached :profile_image
 
   def get_profile_image
-    (profile_image.attached?) ? profile_image : 'no-image.PNG'
+    (profile_image.attached?) ? profile_image : "no-image.PNG"
   end
 
   def follow(member)

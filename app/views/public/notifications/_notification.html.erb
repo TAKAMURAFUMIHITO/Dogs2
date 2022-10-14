@@ -3,7 +3,7 @@
 
 <div>
   <%= link_to member_path(visitor) do %>
-    <%= image_tag visitor.get_profile_image, size: "50x50", class: "profile-img-circle" %>
+    <%= image_tag visitor.get_profile_image, size: "50x50", class: "rounded-circle" %>
   <% end %>
   <%= notification_form(notification) %>
   <br>
