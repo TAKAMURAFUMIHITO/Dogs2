@@ -2,7 +2,14 @@
   <div class="row">
     <div class="mx-auto col-10">
       <h2>みんなの投稿</h2>
+      <p>気になる投稿を探しましょう！</p>
     </div>
   </div>
-  <%= render "index", posts: @posts %>
+  <div class="card-deck">
+    <% @posts.each do |post| %>
+      <div class="col-md-4">
+        <%= render "index", post: post %>
+      </div>
+    <% end %>
+  </div>
 </div>

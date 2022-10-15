@@ -8,6 +8,9 @@ class Public::CommentsController < ApplicationController
     if @comment.save
       #通知の作成
       @comment_post.create_notification_comment!(current_member, @comment.id)
+    else
+      flash[:comment] = "コメントできませんでした。"
+      redirect_to request.referer
     end
   end
 
