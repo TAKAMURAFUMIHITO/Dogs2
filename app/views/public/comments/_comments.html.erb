@@ -1,9 +1,10 @@
-<%= form_with(model: [post, comment], local: false) do |f| %>
+<div class="comment"><%= flash[:comment] %></div>
+<%= form_with(model: [post, Comment.new], local: false) do |f| %>
   <div class="comment">
     <%= f.text_area :comment, :size => "60x1", placeholder: "コメント入力" %>
   </div>
   <div class="comment mb-3">
-    <%= f.submit "コメントする", class: "btn btn-outline-primary" %>
+    <%= f.submit "コメントする", class: "btn btn-outline-primary" %>※100字まで
   </div>
 <% end %>
 
@@ -11,7 +12,7 @@
   <table class="mx-auto">
     <th width="50">
       <%= link_to member_path(comment.member.id) do %>
-        <%= image_tag comment.member.get_profile_image, size: "40x40" %>
+        <%= image_tag comment.member.get_profile_image, size: "40x40", class: "rounded-circle" %>
       <% end %>
     </th>
     <th width="400">

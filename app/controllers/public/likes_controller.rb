@@ -6,7 +6,10 @@ class Public::LikesController < ApplicationController
     @like.save
     # 通知の作成
     @post.create_notification_like!(current_member)
-    respond_to :js
+    respond_to do |format|
+      format.html {redirect_to request.referrer}
+      format.js
+    end
   end
 
   def destroy

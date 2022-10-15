@@ -26,10 +26,11 @@
   </div>
   <div class="message_form">
     <%= form_with model: @message, url: messages_path, method: :post, local: true do |f| %>
-      <%= f.text_field :message %>
+      <%= f.text_field :message, class: "form-control" %>
       <%= f.hidden_field :room_id, :value => @room.id %>
-      <%= f.submit "送信する", class: "btn btn-outline-success" %>
+      <%= f.submit "送信", class: "btn btn-outline-success" %>
     <% end %>
+    誹謗中傷、不適切な発言は控えるように心がけましょう。<br>
     メッセージをクリックすると削除することができます。
   </div>
 </div>

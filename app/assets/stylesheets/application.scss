@@ -67,9 +67,10 @@
 
  .profile_image {
   img {
-   width: 30px;
+   border-radius: 50%;  /* 角丸半径を50%にする(=円形にする) */
+   width: 30px;  /* 縦横を同じ値にする */
    height: 30px;
-   border-radius: 100px;
+   object-fit: cover;
   }
  }
 
@@ -107,7 +108,7 @@
 
 .you {
   width: 100%;
-  margin: 10px 0;
+  padding: 5px 0;
 }
 
 .you .icon {
@@ -159,4 +160,8 @@
   width: 600px;
   background-color: #fff;
   text-align: center;
+}
+
+.notification {
+ margin-bottom: 5px;
 }
