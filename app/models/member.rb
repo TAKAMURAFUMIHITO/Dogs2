@@ -22,6 +22,14 @@ class Member < ApplicationRecord
     (profile_image.attached?) ? profile_image : "no-image.PNG"
   end
 
+  def self.guest
+    find_or_create_by!(email: "guest@example.com") do |member|
+      member.password = SecureRandom.urlsafe_base64
+      member.password_confirmation = member.password
+      member.name = "ゲスト"
+    end
+  end
+
   def follow(member)
     relationships.create(followed_id: member.id)
   end

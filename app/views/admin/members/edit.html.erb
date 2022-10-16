@@ -6,7 +6,11 @@
     <div class="mx-auto col-8">
       <%= form_with model: @member, url: admin_member_path, method: :patch, local: true do |f| %>
         <table class="table">
-          <tr><%= image_tag @member.get_profile_image, size: "100x100" %></tr>
+          <tr>
+            <th></th>
+            <th><%= image_tag @member.get_profile_image %></th>
+            <th></th>
+          </tr>
           <tr>
             <th>ニックネーム</th>
             <th><%= @member.name %></th>

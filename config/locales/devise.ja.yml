@@ -1,0 +1,16 @@
+ja:
+  errors:
+    messages:
+      already_confirmed: "は既に登録済みです"
+#      already_confirmed: "was already confirmed"
+
+  devise:
+    failure:
+      invalid: 'メールアドレスかパスワードが違います。'
+    sessions:
+      signed_in: 'ログインしました。'
+#      signed_in: 'Signed in successfully.'
+      signed_out: 'ログアウトしました。'
+#      signed_out: 'Signed out successfully.'
+    confirmed: 'アカウントを登録しました。'
+#      confirmed: 'Your account was successfully confirmed. You are now signed in.'

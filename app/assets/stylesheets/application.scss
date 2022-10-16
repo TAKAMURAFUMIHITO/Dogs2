@@ -26,7 +26,7 @@
  }
 
  body {
-  background-image: url('background-image.PNG');
+  background-image: url("background-image.PNG");
   background-size: 100%;
  }
 
@@ -50,6 +50,15 @@
   color: #000;
  }
 
+ .card-header {
+   img {
+     border-radius: 50%;  /* 角丸半径を50%にする(=円形にする) */
+     width: 40px;  /* 縦横を同じ値にする */
+     height: 40px;
+     object-fit: cover;
+   }
+ }
+
  .card-footer {
   text-align: right;
   color: #808080;
@@ -65,13 +74,22 @@
   margin-right: 10%;
  }
 
+ th {
+   img {
+     border-radius: 50%;  /* 角丸半径を50%にする(=円形にする) */
+     width: 150px;  /* 縦横を同じ値にする */
+     height: 150px;
+     object-fit: cover;
+   }
+ }
+
  .profile_image {
-  img {
-   border-radius: 50%;  /* 角丸半径を50%にする(=円形にする) */
-   width: 30px;  /* 縦横を同じ値にする */
-   height: 30px;
-   object-fit: cover;
-  }
+   img {
+     border-radius: 50%;  /* 角丸半径を50%にする(=円形にする) */
+     width: 30px;  /* 縦横を同じ値にする */
+     height: 30px;
+     object-fit: cover;
+   }
  }
 
 .chat_room {
@@ -163,5 +181,26 @@
 }
 
 .notification {
- margin-bottom: 5px;
+  margin-bottom: 5px;
+}
+
+.pagination {
+  justify-content: center;
+}
+
+/*ページネーションのデザイン*/
+.pagination li a {
+  border: none;     /*枠線をなくす*/
+  color: #696969;   /*文字の色を変える*/
+}
+
+/* 表示しているページ番号のデザイン */
+.pagination .active a {
+  background: #93c9ff;     /*背景の色を変える*/
+  border-radius: 15px;     /*角を丸くする*/
+}
+
+/*ホバー時のデザイン*/
+.pagination li a:hover {
+  border-radius: 15px;    /*角を丸くする*/
 }
