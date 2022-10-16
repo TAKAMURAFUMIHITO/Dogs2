@@ -8,17 +8,19 @@ class Public::PostsController < ApplicationController
     post = Post.new(post_params)
     post.member_id = current_member.id
     if post.save
+      flash[:notice] = "投稿に成功しました。"
       redirect_to posts_path
     else
-      @posts = Post.all
-      render 'new'
+      @post = Post.new
+      flash[:danger] = "投稿に失敗しました。入力内容を確認してから再度お試しください。"
+      render "new"
     end
   end
 
   def index
     @today = Date.today #今日の日付を取得
     @now = Time.now     #現在時刻を取得
-    @posts = Post.all
+    @posts = Post.all.page(params[:page]).per(15)
   end
 
   def show
@@ -40,8 +42,11 @@ class Public::PostsController < ApplicationController
   def update
     post = Post.find(params[:id])
     if post.update(post_params)
+      flash[:notice] = "投稿を編集しました。"
       redirect_to post_path(post.id)
     else
+      @post = Post.find(params[:id])
+      flash[:danger] = "編集に失敗しました。入力内容を確認してから再度お試しください。"
       render "edit"
     end
   end
@@ -49,6 +54,7 @@ class Public::PostsController < ApplicationController
   def destroy
     post = Post.find(params[:id])
     post.destroy
+    flash[:notice] = "投稿を削除しました。"
     redirect_to posts_path
   end
 

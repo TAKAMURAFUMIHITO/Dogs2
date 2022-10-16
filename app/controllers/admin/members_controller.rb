@@ -6,7 +6,7 @@ class Admin::MembersController < ApplicationController
 
   def show
     @member = Member.find(params[:id])
-    @posts = @member.posts
+    @posts = @member.posts.page(params[:page]).per(8)
     @today = Date.today #今日の日付を取得
     @now = Time.now     #現在時刻を取得
   end

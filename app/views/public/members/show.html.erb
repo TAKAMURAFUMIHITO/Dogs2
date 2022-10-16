@@ -3,7 +3,9 @@
     <div class="col-4">
       <table class="table">
         <h2 style="text-align: center;"><%= @member.name %>のプロフィール</h2>
-        <tr><%= image_tag @member.get_profile_image, class: "rounded-circle", size: "100x100" %></tr>
+        <tr>
+          <th colspan="3"><%= image_tag @member.get_profile_image, class: "rounded-circle" %></th>
+        </tr>
         <tr style="text-align: center;">
           <th>投稿<br><%= @member.posts.count %></th>
           <th>
@@ -61,4 +63,5 @@
       </div>
     </div>
   </div>
+  <%= paginate @posts %>
 </div>

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Public::SessionsController < Devise::SessionsController
-  before_action :reject_deleted_member, only: [:create]
+  before_action :reject_deleted_member, only: :create
   # before_action :configure_sign_in_params, only: [:create]
 
   # GET /resource/sign_in
@@ -43,8 +43,15 @@ class Public::SessionsController < Devise::SessionsController
     ## 【処理内容2】 取得したアカウントのパスワードと入力されたパスワードが一致してるか、かつ、退会ステータスがtrueであるか
     if @member.valid_password?(params[:member][:password]) && (@member.is_deleted == true)
       ##  上が真であるとき、新規会員登録画面に遷移する
-      flash[:withdraw] = 'お客様は退会済みです。申し訳ございませんが、別のメールアドレスをお使いください。'
+      flash[:withdraw] = "お客様は退会済みです。申し訳ございませんが、別のメールアドレスをお使いください。"
       redirect_to new_member_session_path
     end
+  end
+
+  def guest_sign_in
+    member = Member.guest
+    sign_in member   # 会員をログインさせる
+    flash[:notice] = "ゲストユーザーとしてログインしました。"
+    redirect_to member_path(member)
   end
 end

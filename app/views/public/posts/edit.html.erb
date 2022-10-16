@@ -2,6 +2,7 @@
   <div class="row">
     <div class="mx-auto col-10">
       <h2>投稿を編集</h2>
+      <%= flash[:danger] %>
       <%= form_with model: @post, url: post_path, method: :patch, local: true do |f| %>
         <div class="form-group">
           <%= image_tag 'Dogs-logo2.PNG', style: "width: 20px;" %>
