@@ -13,9 +13,13 @@
  *= require_tree .
  *= require_self
  */
+
+ @import url('https://fonts.googleapis.com/css2?family=Mochiy+Pop+One&display=swap');
+
  header {
   background-color: #deb887;
   border-bottom: 1px solid #000;
+  font-family: 'Mochiy Pop One', sans-serif;
  }
 
  footer {
@@ -23,6 +27,7 @@
   font-size: 14px;
   text-align: center;
   border-top: 1px solid #000;
+  font-family: 'Mochiy Pop One', sans-serif;
  }
 
  body {
@@ -32,6 +37,7 @@
 
  main {
   padding: 50px 0;
+  font-family: 'Mochiy Pop One', sans-serif;
  }
 
  td {
