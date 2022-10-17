@@ -2,6 +2,7 @@
   <div class="row">
     <div class="mx-auto col-10">
       <h2>プロフィールを編集</h2>
+      <%= flash[:danger] %>
       <%= form_with model: @member, url: member_path, method: :patch, local: true do |f| %>
         <div class="form-group">
           <%= image_tag 'Dogs-logo2.PNG', style: "width: 20px;" %>
