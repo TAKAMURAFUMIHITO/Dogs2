@@ -1,0 +1,61 @@
+<div class="container">
+  <div class="row">
+    <div class="col-4">
+      <table class="table">
+        <h2 style="text-align: center;"><%= @member.name %>のプロフィール</h2>
+        <tr>
+          <th><%= image_tag @member.get_profile_image %></th>
+          <th></th>
+        </tr>
+        <tr>
+          <th>投稿</th>
+          <th><%= @member.posts.count %></th>
+        </tr>
+        <tr>
+          <th>ニックネーム</th>
+          <th colspan="2"><%= @member.name %></th>
+        </tr>
+        <tr>
+          <th>自己紹介</th>
+          <th colspan="2"><%= @member.introduction %></th>
+        </tr>
+      </table>
+      <%= link_to edit_admin_member_path(@member.id), class: "btn btn-outline-secondary btn-block" do %>
+        <i class="fas fa-user-edit"></i>会員情報を編集
+      <% end %>
+    </div>
+    <div class="col-8">
+      <div class="card-deck">
+        <% @posts.each do |post| %>
+          <div class="col-md-6">
+            <div class="card mb-4 shadow-sm">
+              <div class="card-header">
+                <%= image_tag post.member.get_profile_image %>
+              </div>
+              <% if post.post_image.present? %>
+                <div class="card-img-top">
+                  <%= link_to admin_post_path(post.id) do %>
+                    <%= image_tag post.post_image, size: "180x230" %>
+                  <% end %>
+                </div>
+              <% end %>
+              <div class="card-body">
+                <span>
+                  <%= render "public/comments/count", post: post %>
+                </span><br><br>
+                <%= link_to admin_post_path(post.id) do %>
+                  <h5 class="card-title"><%= post.title %></h4>
+                <% end %>
+                <p class="card-text"><%= post.body.truncate(50) %></p>  <!--50字まで表示-->
+              </div>
+              <div class="card-footer">
+                <%= render 'public/posts/time', post: post %>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <%= paginate @posts %>
+</div>

@@ -1,0 +1,212 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+ @import url('https://fonts.googleapis.com/css2?family=Mochiy+Pop+One&display=swap');
+
+ header {
+  background-color: #deb887;
+  border-bottom: 1px solid #000;
+  font-family: 'Mochiy Pop One', sans-serif;
+ }
+
+ footer {
+  padding: 15px 0;
+  font-size: 14px;
+  text-align: center;
+  border-top: 1px solid #000;
+  font-family: 'Mochiy Pop One', sans-serif;
+ }
+
+ body {
+  background-image: image-url("background-image.PNG");
+  background-size: 100%;
+ }
+
+ main {
+  padding: 50px 0;
+  font-family: 'Mochiy Pop One', sans-serif;
+ }
+
+ td {
+  padding: 10px;
+ }
+
+ th {
+  font-weight: normal;
+ }
+
+ .card-img-top {
+  text-align: center;
+ }
+
+ .card-title {
+  color: #000;
+ }
+
+ .card-header {
+   img {
+     border-radius: 50%;  /* 角丸半径を50%にする(=円形にする) */
+     width: 40px;  /* 縦横を同じ値にする */
+     height: 40px;
+     object-fit: cover;
+   }
+ }
+
+ .card-footer {
+  text-align: right;
+  color: #808080;
+  font-size: 12px;
+ }
+
+ .comment {
+  text-align: center;
+ }
+
+ .search_form {
+  text-align: right;
+  margin-right: 10%;
+ }
+
+ th {
+   img {
+     border-radius: 50%;  /* 角丸半径を50%にする(=円形にする) */
+     width: 150px;  /* 縦横を同じ値にする */
+     height: 150px;
+     object-fit: cover;
+   }
+ }
+
+ .profile_image {
+   img {
+     border-radius: 50%;  /* 角丸半径を50%にする(=円形にする) */
+     width: 30px;  /* 縦横を同じ値にする */
+     height: 30px;
+     object-fit: cover;
+   }
+ }
+
+.chat_room {
+  margin: 10px auto 0px;
+  width: 600px;
+  background-color: #6495ed;
+  text-align: right;
+}
+
+.my_message {
+  padding: 5px 0;
+}
+
+.my_message p {
+  display: inline-block;
+  position: relative;
+  margin: 0 10px 0 5px;
+  padding: 8px;
+  max-width: 250px;
+  border-radius: 12px;
+  background: #30e852;
+  font-size: 15px;
+}
+
+.my_message p:after {
+  content: "";
+  position: absolute;
+  top: 3px;
+  right: -19px;
+  border: 8px solid transparent;
+  border-left: 18px solid #30e852;
+  transform: rotate(-35deg);
+}
+
+.you {
+  width: 100%;
+  padding: 5px 0;
+}
+
+.you .icon {
+  float: left;
+  width: 40px;
+}
+
+.you .icon img {
+  width: 40px;
+  height: 40px;
+  border-radius: 100%;
+}
+
+.you .chat {
+  width: 100%;
+  text-align: left;
+}
+
+.your_message {
+  display: inline-block;
+  position: relative;
+  margin-left: 10px;
+  padding: 10px;
+  max-width: 300px;
+  border-radius: 12px;
+  background: #edf1ee;
+}
+
+.your_message:after {
+  content: "";
+  display: inline-block;
+  position: absolute;
+  top: 3px;
+  left: -19px;
+  border: 8px solid transparent;
+  border-right: 18px solid #edf1ee;
+  transform: rotate(35deg);
+}
+
+.your_message p {
+  margin: 0;
+  padding: 0;
+}
+
+.message_form {
+  margin: 0 auto;
+  padding: 10px 0;
+  border-top: 1px solid;
+  width: 600px;
+  background-color: #fff;
+  text-align: center;
+}
+
+.notification {
+  margin-bottom: 5px;
+}
+
+.pagination {
+  justify-content: center;
+}
+
+/*ページネーションのデザイン*/
+.pagination li a {
+  border: none;     /*枠線をなくす*/
+  color: #696969;   /*文字の色を変える*/
+}
+
+/* 表示しているページ番号のデザイン */
+.pagination .active a {
+  background: #93c9ff;     /*背景の色を変える*/
+  border-radius: 15px;     /*角を丸くする*/
+}
+
+/*ホバー時のデザイン*/
+.pagination li a:hover {
+  border-radius: 15px;    /*角を丸くする*/
+}

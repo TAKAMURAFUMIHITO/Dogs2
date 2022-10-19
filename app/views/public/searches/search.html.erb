@@ -1,0 +1,52 @@
+<div class="container">
+  <div class="row">
+    <div class="mx-auto col-10">
+      <h2>検索結果 "<%= params[:word] %>"</h2>
+    </div>
+  </div>
+  <div>
+    <!--検索対象モデルが会員の時 -->
+    <% if @range == "会員" %>
+      <div class="row">
+        <div class="mx-auto col-10">
+          <%= render "public/members/index", members: @member %>
+        </div>
+      </div>
+    <% else %>
+    <!--検索対象モデルが会員ではない時(= 検索対象モデルが投稿の時) -->
+      <div class="card-deck">
+        <% @posts.each do |post| %>
+          <div class="col-md-4">
+            <div class="card mb-4 shadow-sm">
+              <div class="card-header">
+                <%= link_to member_path(post.member.id) do %>
+                  <%= image_tag post.member.get_profile_image, size: "30x30" %>
+                <% end %>
+              </div>
+              <% if post.post_image.present? %>
+                <div class="card-img-top">
+                  <%= link_to post_path(post.id) do %>
+                    <%= image_tag post.post_image, size: "180x230" %>
+                  <% end %>
+                </div>
+              <% end %>
+              <div class="card-body">
+                <span id="like_<%= post.id %>"><%= render "public/likes/like", post: post %></span>
+                <span>
+                  <%= render "public/comments/count", post: post %>
+                </span><br><br>
+                <%= link_to post_path(post.id) do %>
+                  <h5 class="card-title"><%= post.title %></h4>
+                <% end %>
+                <p class="card-text"><%= post.body.truncate(50) %></p>  <!--50字まで表示-->
+              </div>
+              <div class="card-footer">
+                <%= render 'public/posts/time', post: post %>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>
